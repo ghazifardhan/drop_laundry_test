@@ -5,6 +5,15 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/Users/ghazifadil/Documents/Programming/Projects/DROPLaundryTest/app/drop_laundry_key')
+            storePassword 'ghazi123'
+            keyAlias 'drop_laundry_key'
+            keyPassword 'ghazi123'
+        }
+    }
+
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -21,7 +30,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {

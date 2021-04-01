@@ -52,16 +52,15 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 PermissionState.REQUEST -> {
-                    val shouldProvideRationale = ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-
-                    if (shouldProvideRationale) {
-                        Log.i("shouldProvideRationale", "Displaying permission rationale to provide additional context.")
-                        Toast.makeText(this, "shouldProvideRationale true", Toast.LENGTH_LONG).show()
-                    } else {
-                        Log.i("shouldProvideRationale", "Requesting permission")
-                        Toast.makeText(this, "shouldProvideRationale false", Toast.LENGTH_LONG).show()
-                        startLocationPermissionRequest()
-                    }
+                    startLocationPermissionRequest()
+//                    val shouldProvideRationale = ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//
+//                    if (shouldProvideRationale) {
+//                        Log.i("shouldProvideRationale", "Displaying permission rationale to provide additional context.")
+//                    } else {
+//                        Log.i("shouldProvideRationale", "Requesting permission")
+//                        startLocationPermissionRequest()
+//                    }
                 }
                 PermissionState.DONE -> {
                     val task = fusedLocationProviderClient.lastLocation
@@ -87,7 +86,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startLocationPermissionRequest() {
-        Toast.makeText(this, "startLocationPermissionRequest", Toast.LENGTH_LONG).show()
         ActivityCompat.requestPermissions(this@MainActivity,
             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_PERMISSIONS_REQUEST_CODE)
     }
