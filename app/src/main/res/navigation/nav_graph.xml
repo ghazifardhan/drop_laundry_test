@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/maps_fragment">
+
+    <fragment
+        android:id="@+id/maps_fragment"
+        android:name="com.ghazifadil.droplaundrytest.view.MapsFragment"
+        android:label="@string/maps"
+        tools:layout="@layout/fragment_maps">
+
+        <action
+            android:id="@+id/action_maps_fragment_to_search_place_fragment"
+            app:destination="@id/search_place_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/search_place_fragment"
+        android:name="com.ghazifadil.droplaundrytest.view.SearchPlaceFragment"
+        android:label="@string/search"
+        tools:layout="@layout/fragment_search_place">
+
+        <action
+            android:id="@+id/action_search_place_fragment_to_maps_fragment"
+            app:destination="@id/maps_fragment" />
+    </fragment>
+</navigation>

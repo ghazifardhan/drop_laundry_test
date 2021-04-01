@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:popupTheme="@style/Theme.DROPLaundryTest.PopupOverlay"
+            >
+
+            <TextView
+                android:id="@+id/main_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_address"
+            />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_main"/>
+
+<!--    <fragment-->
+<!--        android:id="@+id/CountFragment"-->
+<!--        android:name="com.ghazifadil.droplaundrytest.view.CountFragment"-->
+<!--        android:label="Count Fragment"-->
+<!--        tools:layout="@layout/fragment_count"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_width="match_parent">-->
+<!--    </fragment>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/maps_fragment"-->
+<!--        android:name="com.ghazifadil.droplaundrytest.view.MapsFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:layout="@layout/fragment_maps"-->
+<!--        />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/maps_fragment"-->
+<!--        android:name="com.ghazifadil.droplaundrytest.view.MapsFragment"-->
+<!--        android:label="Maps Fragment"-->
+<!--        tools:layout="@layout/fragment_maps"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_width="match_parent">-->
+<!--    </fragment>-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/search_place_fragment"-->
+<!--        android:name="com.ghazifadil.droplaundrytest.view.SearchPlaceFragment"-->
+<!--        android:label="Search Place Fragment"-->
+<!--        tools:layout="@layout/fragment_search_place"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_width="match_parent">-->
+<!--    </fragment>-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

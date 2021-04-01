@@ -1,0 +1,48 @@
+package com.ghazifadil.droplaundrytest.common
+
+import com.ghazifadil.droplaundrytest.R
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.dsl.module
+import java.util.concurrent.TimeUnit
+import org.koin.android.BuildConfig.DEBUG
+import org.koin.android.ext.koin.androidContext
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+
+val networkModule = module {
+
+    val connectTimeout: Long = 400 // 20s
+    val readTimeout : Long  = 40 // 20s
+
+    fun provideHttpClient(): OkHttpClient {
+        val okHttpClientBuilder = OkHttpClient.Builder()
+            .connectTimeout(connectTimeout, TimeUnit.SECONDS)
+            .readTimeout(readTimeout, TimeUnit.SECONDS)
+
+        if (DEBUG) {
+            val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+            okHttpClientBuilder.addInterceptor(httpLoggingInterceptor)
+        }
+        okHttpClientBuilder.build()
+        return okHttpClientBuilder.build()
+    }
+
+    fun provideRetrofit(client: OkHttpClient, baseUrl: String): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(client)
+            .build()
+    }
+
+    single { provideHttpClient() }
+    single {
+        val baseUrl = androidContext().getString(R.string.base_url)
+        provideRetrofit(get(), baseUrl)
+    }
+}
